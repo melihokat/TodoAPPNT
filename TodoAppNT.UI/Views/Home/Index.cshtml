@@ -1,0 +1,57 @@
+﻿@model List<WorkListDto>
+<html xmlns="http://www.w3.org/1993/xhtml">
+<head>
+    <title>Todo App</title>
+    <link href="~/node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    
+    <div ckass="conatiner my-2"></div>
+    <div class="text-end" my-2>
+        <a asp-action="Create" asp-controller="Home" class="btn btn-primary btn-sm">Yeni iş ekle</a>
+    
+
+
+
+    <table class="table table-hovered table-bored table-sm">
+        <thead>
+            <tr>
+                <th>
+                    İş
+                    </th>
+                <th>
+                    Durum
+                </th>
+                <th>
+                    İşlem
+                <th>
+
+                
+            </tr>
+
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Definition</td>
+                    <td>@(item.IsCompleted?"Tamamlandı":"Tamamlanmadı")</td>
+                    <td>
+                        <a asp-action="Update" asp-controller="Home" asp-route-id=@item.Id class="btn btn-warning btn-sm">Güncelle</a>
+                        @*çekmek istediğimiz itemin idsini route ile yazarız*@
+                        <a asp-action="Remove" aso-controller="Home" asp-route-id=@item.Id class="btn btn-warning btn-sm">Sil</a>
+                    </td>
+                </tr>
+            }
+
+
+
+        </tbody>
+    </table>
+    </div>
+
+</body>
+</html>
+
+
+
